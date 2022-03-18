@@ -1,0 +1,113 @@
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(const MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
+
+Widget build(BuildContext context){
+  Widget titleSection = Container(
+    padding: const EdgeInsets.all(32),
+    child: Row(
+      children: [
+        Expanded(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Container(
+                padding: const EdgeInsets.only(bottom: 8),
+                child: const Text(
+                  'LAYOUT PRUEBA ',
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+              Text(
+                'JULIAN LANCHEROS',
+                style: TextStyle(
+                  color: Colors.blue[500],
+                ),
+              ),
+            ],
+          ),
+        ),
+        Icon(
+          Icons.star,
+          color: Colors.black,
+        ),
+        const Text('41'),
+      ],
+    ),
+  );
+  Color color = Theme.of(context).primaryColor;
+  Widget buttonSection = Row(
+    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+    children: [
+      _buildButtonColumn(color, Icons.access_time, 'TIEMPO DE ACCESO'),
+      _buildButtonColumn(color, Icons.account_balance_wallet, 'BILLETERA'),
+      _buildButtonColumn(color, Icons.add_a_photo, 'FOTOGRAFIA'),
+    ],
+  );
+  Widget textSection = const Padding(
+    padding: EdgeInsets.all(32),
+    child: Text(
+      'Intento numero 1 de elaboracion de layaout '
+          'por parte de julian lancheros niño'
+          'para la materia del profesor leonardo'
+      'El concepto layout hace referencia a la disposición que tomarán los productos o '
+          'secciones dentro de un punto de venta, página web o empresa. Es un esquema que '
+          'resume y señala la distribución y forma de los elementos dentro de un diseño. '
+          'Por ejemplo, para el desarrollo de una página web es el diseño base.'
+      'para mas informacion visita '
+          ': https://docs.flutter.dev/development/ui/layout/tutorial#step-5-implement-the-image-section'
+          'ingenieria de sistemas semestre VIII',
+      softWrap: true,
+    ),
+  );
+  return MaterialApp(
+    title: 'Demo de flutter',
+    home: Scaffold(
+    appBar: AppBar(
+      title: const Text('Demo de layout'),
+  ),
+  body: ListView(
+  children: [
+    Image.asset(
+  'imagen1.jpg',
+  width: 600,
+  height: 240,
+  fit: BoxFit.cover,
+  ),
+  titleSection,
+  buttonSection,
+  textSection,
+  ],
+  ),
+  ),
+  );
+ }
+  Column _buildButtonColumn(Color color, IconData icon, String label){
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Icon(icon, color: color),
+        Container(
+          margin: const EdgeInsets.only(top: 8),
+          child: Text(
+            label,
+            style: TextStyle(
+              fontSize: 12,
+              fontWeight: FontWeight.w400,
+              color: color,
+            ),
+          ),
+        )
+      ],
+    );
+  }
+  }
